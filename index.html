@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevOps – Internal Assessment II | Answers</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap');
+
+  :root {
+    --bg: #0b0f13;
+    --surface: #151922;
+    --surface-raised: #1b202b;
+    --border: #2b3240;
+    --accent: #4f9cf9;
+    --accent2: #3de6b0;
+    --accent3: #f97b4f;
+    --text: #e6edf7;
+    --muted: #9aa7ba;
+    --mark: #f9c94f;
+    --part-a: #3de6b0;
+    --part-b: #4f9cf9;
+    --part-c: #f97b4f;
+    --shadow: 0 18px 50px rgba(0,0,0,0.28);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background:
+      linear-gradient(180deg, rgba(79,156,249,0.08) 0, transparent 260px),
+      linear-gradient(135deg, #0b0f13 0%, #10151b 45%, #0b0f13 100%);
+    color: var(--text);
+    line-height: 1.65;
+    font-size: 15px;
+    min-height: 100vh;
+  }
+
+  header {
+    background: linear-gradient(135deg, rgba(21,25,34,0.95) 0%, rgba(11,15,19,0.94) 72%);
+    border-bottom: 1px solid rgba(79,156,249,0.35);
+    padding: 36px 32px 34px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(79,156,249,0.12) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(79,156,249,0.08) 1px, transparent 1px);
+    background-size: 44px 44px;
+    -webkit-mask-image: linear-gradient(90deg, rgba(0,0,0,0.3), transparent 72%);
+    mask-image: linear-gradient(90deg, rgba(0,0,0,0.3), transparent 72%);
+    pointer-events: none;
+  }
+
+  header > * {
+    max-width: 1080px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+  }
+
+  .header-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--accent2);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  header h1 {
+    font-size: 34px;
+    line-height: 1.15;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0;
+  }
+
+  header .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    margin-top: 18px;
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 30px;
+    padding: 5px 10px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px;
+    background: rgba(255,255,255,0.035);
+    color: var(--muted);
+  }
+
+  .meta-item span { color: var(--accent); font-weight: 600; }
+
+  main { max-width: 1080px; margin: 0 auto; padding: 36px 32px 80px; }
+
+  .part-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 44px 0 20px;
+    padding: 0 2px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .part-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 5px 12px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .tag-a { background: rgba(61,230,176,0.15); color: var(--part-a); border: 1px solid rgba(61,230,176,0.3); }
+  .tag-b { background: rgba(79,156,249,0.15); color: var(--part-b); border: 1px solid rgba(79,156,249,0.3); }
+  .tag-c { background: rgba(249,123,79,0.15); color: var(--part-c); border: 1px solid rgba(249,123,79,0.3); }
+
+  .part-header h2 { font-size: 15px; color: var(--muted); font-weight: 400; line-height: 1.4; }
+
+  .question-card {
+    background: linear-gradient(180deg, var(--surface-raised), var(--surface));
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 22px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+
+  .q-header {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 14px;
+    padding: 18px 22px 16px;
+    background: rgba(255,255,255,0.035);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .q-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--mark);
+    min-width: 38px;
+    min-height: 32px;
+    padding: 4px 8px;
+    border: 1px solid rgba(249,201,79,0.28);
+    border-radius: 6px;
+    background: rgba(249,201,79,0.08);
+  }
+
+  .q-text {
+    font-weight: 600;
+    font-size: 15px;
+    color: #d7e2f3;
+    line-height: 1.5;
+    min-width: 0;
+  }
+
+  .q-marks {
+    justify-self: end;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+    padding: 5px 8px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: rgba(11,15,19,0.42);
+  }
+
+  .q-body { padding: 22px; }
+
+  .point {
+    display: grid;
+    grid-template-columns: 8px minmax(0, 1fr);
+    gap: 12px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .point:last-of-type { border-bottom: none; margin-bottom: 0; }
+
+  .point-bullet {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-top: 9px;
+    flex-shrink: 0;
+  }
+
+  .point-content { min-width: 0; }
+
+  .point-bullet.green { background: var(--accent2); }
+  .point-bullet.orange { background: var(--accent3); }
+
+  .point-content strong {
+    color: var(--accent2);
+    font-weight: 600;
+  }
+
+  /* Diagrams */
+  .diagram {
+    margin: 18px 0 20px;
+    background: rgba(7,10,14,0.72);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 22px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .diagram-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+    text-align: center;
+  }
+
+  .diagram svg {
+    display: block;
+    width: 100%;
+    min-width: 640px;
+    height: auto;
+  }
+
+  svg text { font-family: 'IBM Plex Sans', sans-serif; }
+
+  .code-block {
+    background: #0a0c10;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 12px 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: #8be9fd;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: pre;
+    line-height: 1.6;
+  }
+
+  .inline-code {
+    font-family: 'IBM Plex Mono', monospace;
+    background: rgba(79,156,249,0.12);
+    color: #8be9fd;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+  }
+
+  table {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 13.5px;
+  }
+
+  th {
+    background: rgba(79,156,249,0.1);
+    color: var(--accent);
+    font-weight: 600;
+    padding: 10px 14px;
+    text-align: left;
+    border: 1px solid var(--border);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+  }
+
+  td {
+    padding: 9px 14px;
+    border: 1px solid var(--border);
+    vertical-align: top;
+    color: var(--text);
+  }
+
+  tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+
+  .highlight-box {
+    background: rgba(61,230,176,0.06);
+    border-left: 3px solid var(--accent2);
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+    font-size: 13.5px;
+  }
+
+  table tbody {
+    display: table;
+    width: 100%;
+    min-width: 640px;
+  }
+
+  @media (max-width: 760px) {
+    body { font-size: 14px; }
+
+    header {
+      padding: 26px 18px 24px;
+    }
+
+    .header-badge {
+      font-size: 10px;
+      line-height: 1.4;
+    }
+
+    header h1 {
+      font-size: 26px;
+    }
+
+    header .meta {
+      gap: 8px;
+      font-size: 11px;
+    }
+
+    .meta-item {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    main {
+      padding: 24px 14px 56px;
+    }
+
+    .part-header {
+      align-items: flex-start;
+      gap: 10px;
+      margin: 34px 0 16px;
+    }
+
+    .part-header h2 {
+      font-size: 13px;
+    }
+
+    .question-card {
+      margin-bottom: 16px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.24);
+    }
+
+    .q-header {
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 10px 12px;
+      padding: 14px;
+    }
+
+    .q-num {
+      min-width: 34px;
+      min-height: 30px;
+      font-size: 12px;
+    }
+
+    .q-text {
+      font-size: 14px;
+    }
+
+    .q-marks {
+      grid-column: 2;
+      justify-self: start;
+      font-size: 10px;
+    }
+
+    .q-body {
+      padding: 16px 14px;
+    }
+
+    .point {
+      gap: 10px;
+    }
+
+    .diagram {
+      margin-left: -2px;
+      margin-right: -2px;
+      padding: 16px;
+    }
+
+    .diagram svg {
+      min-width: 560px;
+    }
+
+    .code-block {
+      padding: 12px;
+      font-size: 11.5px;
+    }
+
+    .inline-code {
+      font-size: 12px;
+      overflow-wrap: anywhere;
+    }
+  }
+
+  @media print {
+    body {
+      background: #fff;
+      color: #111827;
+    }
+
+    header,
+    .question-card,
+    .diagram,
+    .code-block {
+      box-shadow: none;
+    }
+
+    .question-card {
+      break-inside: avoid;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-badge">Internal Assessment – II | DevOps (221SEDE16)</div>
+  <h1>Complete Exam Answers</h1>
+  <div class="meta">
+    <span class="meta-item">Semester: <span>VIII</span></span>
+    <span class="meta-item">Program: <span>B.Tech ISE</span></span>
+    <span class="meta-item">Max Marks: <span>50</span></span>
+    <span class="meta-item">Date: <span>15.04.2026</span></span>
+  </div>
+</header>
+
+<main>
+
+<!-- ===== PART A ===== -->
+<div class="part-header">
+  <span class="part-tag tag-a">Part A</span>
+  <h2>5 × 2 = 10 Marks &nbsp;(Answer All Questions)</h2>
+</div>
+
+<!-- Q1 -->
+<div class="question-card">
+  <div class="q-header">
+    <span class="q-num">Q1</span>
+    <span class="q-text">Define the role of workspace management in Jenkins.</span>
+    <span class="q-marks">2 Marks</span>
+  </div>
+  <div class="q-body">
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Dedicated Build Directory:</strong> A Jenkins workspace is a dedicated directory on the build agent where Jenkins checks out source code and executes build steps for each job. It isolates each project's files to avoid conflicts between concurrent builds.</div>
+    </div>
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Maintenance & Cleanup:</strong> Workspace management prevents disk space issues by cleaning up stale artifacts. Jenkins supports manual cleanup via the UI, the Workspace Cleanup Plugin for automatic removal, and post-build actions to delete workspace files after job execution — ensuring reliable, reproducible builds every time.</div>
+    </div>
+
+    <div class="diagram">
+      <div class="diagram-title">Jenkins Workspace Flow</div>
+      <svg viewBox="0 0 680 120" xmlns="http://www.w3.org/2000/svg" width="100%">
+        <defs>
+          <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#4f9cf9"/>
+          </marker>
+        </defs>
+        <!-- boxes -->
+        <rect x="10" y="35" width="130" height="50" rx="8" fill="#141a2e" stroke="#4f9cf9" stroke-width="1.5"/>
+        <text x="75" y="57" text-anchor="middle" fill="#4f9cf9" font-size="12" font-weight="600">SCM / Git</text>
+        <text x="75" y="75" text-anchor="middle" fill="#8892a4" font-size="11">Source Code</text>
+
+        <rect x="190" y="35" width="140" height="50" rx="8" fill="#141a2e" stroke="#3de6b0" stroke-width="1.5"/>
+        <text x="260" y="57" text-anchor="middle" fill="#3de6b0" font-size="12" font-weight="600">Jenkins Workspace</text>
+        <text x="260" y="75" text-anchor="middle" fill="#8892a4" font-size="11">/var/jenkins/workspace/job</text>
+
+        <rect x="380" y="35" width="130" height="50" rx="8" fill="#141a2e" stroke="#f9c94f" stroke-width="1.5"/>
+        <text x="445" y="57" text-anchor="middle" fill="#f9c94f" font-size="12" font-weight="600">Build Steps</text>
+        <text x="445" y="75" text-anchor="middle" fill="#8892a4" font-size="11">compile / test / package</text>
+
+        <rect x="560" y="35" width="110" height="50" rx="8" fill="#141a2e" stroke="#f97b4f" stroke-width="1.5"/>
+        <text x="615" y="57" text-anchor="middle" fill="#f97b4f" font-size="12" font-weight="600">Cleanup</text>
+        <text x="615" y="75" text-anchor="middle" fill="#8892a4" font-size="11">post-build action</text>
+
+        <!-- arrows -->
+        <line x1="140" y1="60" x2="188" y2="60" stroke="#4f9cf9" stroke-width="1.5" marker-end="url(#arr)"/>
+        <line x1="330" y1="60" x2="378" y2="60" stroke="#4f9cf9" stroke-width="1.5" marker-end="url(#arr)"/>
+        <line x1="510" y1="60" x2="558" y2="60" stroke="#4f9cf9" stroke-width="1.5" marker-end="url(#arr)"/>
+
+        <text x="165" y="52" fill="#8892a4" font-size="10" text-anchor="middle">checkout</text>
+        <text x="354" y="52" fill="#8892a4" font-size="10" text-anchor="middle">execute</text>
+        <text x="534" y="52" fill="#8892a4" font-size="10" text-anchor="middle">artifacts</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- Q2 -->
+<div class="question-card">
+  <div class="q-header">
+    <span class="q-num">Q2</span>
+    <span class="q-text">Identify the significance of Group ID and Artifact ID within a Maven project.</span>
+    <span class="q-marks">2 Marks</span>
+  </div>
+  <div class="q-body">
+    <div class="point">
+      <div class="point-bullet green"></div>
+      <div class="point-content"><strong>Group ID:</strong> Uniquely identifies the organization or project group (e.g., <span class="inline-code">com.example</span>). It follows the reverse-domain naming convention and groups related projects under one namespace, enabling Maven to locate the correct repository directory for dependency resolution.</div>
+    </div>
+    <div class="point">
+      <div class="point-bullet green"></div>
+      <div class="point-content"><strong>Artifact ID:</strong> Identifies the specific project or module (e.g., <span class="inline-code">my-app</span>). Combined with Group ID and version, it forms a globally unique coordinate (<span class="inline-code">groupId:artifactId:version</span>) used by Maven to download, cache, and resolve dependencies from local and remote repositories.</div>
+    </div>
+    <div class="code-block">&lt;groupId&gt;com.example&lt;/groupId&gt;
+&lt;artifactId&gt;my-app&lt;/artifactId&gt;
+&lt;version&gt;1.0.0&lt;/version&gt;</div>
+  </div>
+</div>
+
+<!-- Q3 -->
+<div class="question-card">
+  <div class="q-header">
+    <span class="q-num">Q3</span>
+    <span class="q-text">Outline the primary function of Docker Hub in container management.</span>
+    <span class="q-marks">2 Marks</span>
+  </div>
+  <div class="q-body">
+    <div class="point">
+      <div class="point-bullet orange"></div>
+      <div class="point-content"><strong>Central Image Registry:</strong> Docker Hub is a cloud-based registry that acts as the default storage and distribution platform for Docker images. It hosts official images (Ubuntu, Nginx, MySQL), community images, and private repositories — allowing developers to <span class="inline-code">docker pull</span> ready-to-use images or <span class="inline-code">docker push</span> custom images for sharing.</div>
+    </div>
+    <div class="point">
+      <div class="point-bullet orange"></div>
+      <div class="point-content"><strong>CI/CD Integration & Collaboration:</strong> Docker Hub supports automated builds triggered from GitHub/Bitbucket, image versioning via tags (e.g., <span class="inline-code">nginx:1.21</span>), and webhook integration. Teams can collaborate using shared private repositories with role-based access control, making it a critical hub in the DevOps pipeline.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q4 -->
+<div class="question-card">
+  <div class="q-header">
+    <span class="q-num">Q4</span>
+    <span class="q-text">What is the necessity of maintaining a secure deployment pipeline?</span>
+    <span class="q-marks">2 Marks</span>
+  </div>
+  <div class="q-body">
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Preventing Unauthorized Access & Vulnerabilities:</strong> A secure deployment pipeline enforces authentication, role-based access control, and encrypted communications (HTTPS/TLS) at every stage — from code commit to production deployment. This prevents unauthorized code injection, supply chain attacks, and exposure of sensitive credentials in the pipeline.</div>
+    </div>
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Ensuring Compliance & Reliability:</strong> Security gates (automated SAST/DAST scans, image vulnerability scanning, signed artifacts) embedded in the pipeline ensure only validated, compliant code reaches production. This maintains software integrity, meets regulatory requirements, and reduces the risk of deploying broken or malicious builds.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q5 -->
+<div class="question-card">
+  <div class="q-header">
+    <span class="q-num">Q5</span>
+    <span class="q-text">Summarize the prerequisites for configuring a Maven build environment.</span>
+    <span class="q-marks">2 Marks</span>
+  </div>
+  <div class="q-body">
+    <div class="point">
+      <div class="point-bullet green"></div>
+      <div class="point-content"><strong>Java Development Kit (JDK 8+):</strong> Maven requires JDK 8 or later to be installed. The <span class="inline-code">JAVA_HOME</span> environment variable must be set to the JDK installation path. Verified using <span class="inline-code">java -version</span>.</div>
+    </div>
+    <div class="point">
+      <div class="point-bullet green"></div>
+      <div class="point-content"><strong>Environment Variables & Network:</strong> <span class="inline-code">M2_HOME</span> must point to the Maven installation directory, and Maven's <span class="inline-code">bin/</span> folder must be added to the system <span class="inline-code">PATH</span>. An internet connection (or configured proxy in <span class="inline-code">settings.xml</span>) is required to download dependencies from Maven Central Repository.</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===== PART B ===== -->
+<div class="part-header">
+  <span class="part-tag tag-b">Part B</span>
+  <h2>4 × 5 = 20 Marks &nbsp;(Answer Any 4 out of 5)</h2>
+</div>
+
+<!-- Q6 -->
+<div class="question-card">
+  <div class="q-header">
+    <span class="q-num">Q6</span>
+    <span class="q-text">Illustrate the execution flow of parent and child builds within a Jenkins Build Pipeline.</span>
+    <span class="q-marks">5 Marks</span>
+  </div>
+  <div class="q-body">
+
+    <div class="diagram">
+      <div class="diagram-title">Parent–Child Build Execution Flow</div>
+      <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" width="100%">
+        <defs>
+          <marker id="arr2" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#4f9cf9"/>
+          </marker>
+          <marker id="arr3" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#3de6b0"/>
+          </marker>
+        </defs>
+
+        <!-- Developer -->
+        <rect x="10" y="85" width="90" height="50" rx="8" fill="#141a2e" stroke="#8892a4" stroke-width="1.2"/>
+        <text x="55" y="108" text-anchor="middle" fill="#8892a4" font-size="12">Developer</text>
+        <text x="55" y="124" text-anchor="middle" fill="#8892a4" font-size="11">pushes code</text>
+
+        <!-- Parent Job -->
+        <rect x="150" y="70" width="140" height="80" rx="8" fill="#141a2e" stroke="#f9c94f" stroke-width="2"/>
+        <text x="220" y="95" text-anchor="middle" fill="#f9c94f" font-size="13" font-weight="700">Parent Job</text>
+        <text x="220" y="113" text-anchor="middle" fill="#8892a4" font-size="11">Build &amp; Run steps</text>
+        <text x="220" y="130" text-anchor="middle" fill="#8892a4" font-size="11">Post-build: trigger ↓</text>
+
+        <!-- Child 1 -->
+        <rect x="350" y="30" width="130" height="50" rx="8" fill="#141a2e" stroke="#3de6b0" stroke-width="1.5"/>
+        <text x="415" y="52" text-anchor="middle" fill="#3de6b0" font-size="12" font-weight="600">Child Job A</text>
+        <text x="415" y="68" text-anchor="middle" fill="#8892a4" font-size="11">Unit Tests</text>
+
+        <!-- Child 2 -->
+        <rect x="350" y="100" width="130" height="50" rx="8" fill="#141a2e" stroke="#3de6b0" stroke-width="1.5"/>
+        <text x="415" y="122" text-anchor="middle" fill="#3de6b0" font-size="12" font-weight="600">Child Job B</text>
+        <text x="415" y="138" text-anchor="middle" fill="#8892a4" font-size="11">Integration Tests</text>
+
+        <!-- Deploy -->
+        <rect x="545" y="70" width="120" height="50" rx="8" fill="#141a2e" stroke="#f97b4f" stroke-width="1.5"/>
+        <text x="605" y="92" text-anchor="middle" fill="#f97b4f" font-size="12" font-weight="600">Deploy Stage</text>
+        <text x="605" y="108" text-anchor="middle" fill="#8892a4" font-size="11">After all children</text>
+
+        <!-- arrows -->
+        <line x1="100" y1="110" x2="148" y2="110" stroke="#4f9cf9" stroke-width="1.5" marker-end="url(#arr2)"/>
+        <line x1="290" y1="95" x2="348" y2="60" stroke="#3de6b0" stroke-width="1.5" marker-end="url(#arr3)"/>
+        <line x1="290" y1="120" x2="348" y2="125" stroke="#3de6b0" stroke-width="1.5" marker-end="url(#arr3)"/>
+        <line x1="480" y1="55" x2="543" y2="88" stroke="#4f9cf9" stroke-width="1.5" marker-end="url(#arr2)"/>
+        <line x1="480" y1="125" x2="543" y2="108" stroke="#4f9cf9" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+        <text x="124" y="104" fill="#8892a4" font-size="10" text-anchor="middle">trigger</text>
+
+        <!-- Labels -->
+        <text x="55" y="185" text-anchor="middle" fill="#8892a4" font-size="10">① commit</text>
+        <text x="220" y="185" text-anchor="middle" fill="#f9c94f" font-size="10">② primary build</text>
+        <text x="415" y="185" text-anchor="middle" fill="#3de6b0" font-size="10">③ parallel children</text>
+        <text x="605" y="185" text-anchor="middle" fill="#f97b4f" font-size="10">④ deploy</text>
+      </svg>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Parent Job Definition:</strong> The parent build is the primary Jenkins job. It handles initial steps such as SCM checkout, compilation, and code quality checks. After its own steps complete, it triggers downstream (child) jobs via <em>Post-Build Actions → Build Other Projects</em>.</div>
+    </div>
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Child Job Triggering:</strong> Child jobs are dependent sub-jobs (e.g., Unit Test Job, Integration Test Job). They are configured as downstream builds and can be triggered based on the parent's build result (always, on success, on failure).</div>
+    </div>
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Parallel Execution:</strong> Unlike sequential builds, parent-child builds allow child jobs to run in parallel, significantly reducing total pipeline time. This is ideal for modular projects where independent components can be tested simultaneously.</div>
+    </div>
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Parameterized Trigger:</strong> Parent jobs can pass parameters (like build version, environment name) to child jobs using the Parameterized Trigger Plugin, enabling flexible, context-aware child build execution.</div>
+    </div>
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Pipeline Script Example:</strong></div>
+    </div>
+    <div class="code-block">pipeline {
+  agent any
+  stages {
+    stage('Parent Build') {
+      steps {
+        echo 'Building Parent Job'
+        build job: 'Child_Job_A'
+        build job: 'Child_Job_B'
+      }
+    }
+  }
+}</div>
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Best Practice:</strong> Use Declarative Pipelines with <span class="inline-code">parallel</span> blocks for child jobs, store Jenkinsfiles in version control, and configure webhook-based triggers for automated execution on each commit.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q7 -->
+<div class="question-card">
+  <div class="q-header">
+    <span class="q-num">Q7</span>
+    <span class="q-text">Explain dependency management principles used to configure and manage external libraries in Apache Maven for a Java project, with suitable examples.</span>
+    <span class="q-marks">5 Marks</span>
+  </div>
+  <div class="q-body">
+
+    <div class="diagram">
+      <div class="diagram-title">Maven Dependency Resolution Flow</div>
+      <svg viewBox="0 0 680 130" xmlns="http://www.w3.org/2000/svg" width="100%">
+        <defs>
+          <marker id="arr4" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#4f9cf9"/>
+          </marker>
+        </defs>
+        <rect x="10" y="40" width="110" height="50" rx="8" fill="#141a2e" stroke="#f9c94f" stroke-width="1.5"/>
+        <text x="65" y="62" text-anchor="middle" fill="#f9c94f" font-size="12" font-weight="600">pom.xml</text>
+        <text x="65" y="79" text-anchor="middle" fill="#8892a4" font-size="11">declares deps</text>
+
+        <rect x="175" y="40" width="130" height="50" rx="8" fill="#141a2e" stroke="#3de6b0" stroke-width="1.5"/>
+        <text x="240" y="62" text-anchor="middle" fill="#3de6b0" font-size="12" font-weight="600">Local Repo</text>
+        <text x="240" y="79" text-anchor="middle" fill="#8892a4" font-size="11">~/.m2/repository</text>
+
+        <rect x="360" y="40" width="140" height="50" rx="8" fill="#141a2e" stroke="#4f9cf9" stroke-width="1.5"/>
+        <text x="430" y="62" text-anchor="middle" fill="#4f9cf9" font-size="12" font-weight="600">Central Repo</text>
+        <text x="430" y="79" text-anchor="middle" fill="#8892a4" font-size="11">repo.maven.apache.org</text>
+
+        <rect x="555" y="40" width="115" height="50" rx="8" fill="#141a2e" stroke="#f97b4f" stroke-width="1.5"/>
+        <text x="612" y="62" text-anchor="middle" fill="#f97b4f" font-size="12" font-weight="600">Remote Repo</text>
+        <text x="612" y="79" text-anchor="middle" fill="#8892a4" font-size="11">Nexus / Artifactory</text>
+
+        <line x1="120" y1="65" x2="173" y2="65" stroke="#4f9cf9" stroke-width="1.5" marker-end="url(#arr4)"/>
+        <line x1="305" y1="65" x2="358" y2="65" stroke="#4f9cf9" stroke-width="1.5" marker-end="url(#arr4)"/>
+        <line x1="500" y1="65" x2="553" y2="65" stroke="#4f9cf9" stroke-width="1.5" marker-end="url(#arr4)"/>
+
+        <text x="147" y="58" text-anchor="middle" fill="#8892a4" font-size="10">check</text>
+        <text x="332" y="58" text-anchor="middle" fill="#8892a4" font-size="10">miss → fetch</text>
+        <text x="527" y="58" text-anchor="middle" fill="#8892a4" font-size="10">fallback</text>
+
+        <text x="65" y="118" text-anchor="middle" fill="#8892a4" font-size="10">① define</text>
+        <text x="240" y="118" text-anchor="middle" fill="#3de6b0" font-size="10">② cache hit?</text>
+        <text x="430" y="118" text-anchor="middle" fill="#4f9cf9" font-size="10">③ download &amp; cache</text>
+        <text x="612" y="118" text-anchor="middle" fill="#f97b4f" font-size="10">④ enterprise mirror</text>
+      </svg>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet green"></div>
+      <div class="point-content"><strong>Declaring Dependencies in pom.xml:</strong> All external libraries are declared inside the <span class="inline-code">&lt;dependencies&gt;</span> block using <span class="inline-code">groupId</span>, <span class="inline-code">artifactId</span>, and <span class="inline-code">version</span>. Maven automatically downloads and caches them.</div>
+    </div>
+    <div class="code-block">&lt;dependencies&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-core&lt;/artifactId&gt;
+    &lt;version&gt;5.3.10&lt;/version&gt;
+  &lt;/dependency&gt;
+&lt;/dependencies&gt;</div>
+    <div class="point">
+      <div class="point-bullet green"></div>
+      <div class="point-content"><strong>Dependency Scopes:</strong> Maven supports scopes to control dependency availability — <span class="inline-code">compile</span> (default, available everywhere), <span class="inline-code">test</span> (only during testing, e.g., JUnit), <span class="inline-code">provided</span> (provided by JDK/server, e.g., Servlet API), and <span class="inline-code">runtime</span> (needed at runtime, not compile time).</div>
+    </div>
+    <div class="point">
+      <div class="point-bullet green"></div>
+      <div class="point-content"><strong>Transitive Dependency Resolution:</strong> Maven automatically resolves transitive dependencies — if Library A depends on Library B, Maven includes B without manual declaration. This prevents dependency conflicts and version mismatches.</div>
+    </div>
+    <div class="point">
+      <div class="point-bullet green"></div>
+      <div class="point-content"><strong>Dependency Management Block:</strong> In multi-module projects, the <span class="inline-code">&lt;dependencyManagement&gt;</span> section in the parent POM centralizes version definitions, ensuring all child modules use consistent versions without individually specifying them.</div>
+    </div>
+    <div class="point">
+      <div class="point-bullet green"></div>
+      <div class="point-content"><strong>Repository Configuration:</strong> Maven resolves dependencies from the Local Repository (<span class="inline-code">~/.m2/repository</span>) first, then Maven Central, then configured remote/enterprise repositories (Nexus/Artifactory). Custom repositories are added via <span class="inline-code">&lt;repositories&gt;</span> in pom.xml or settings.xml.</div>
+    </div>
+    <div class="point">
+      <div class="point-bullet green"></div>
+      <div class="point-content"><strong>Snapshot vs Release:</strong> Dependencies versioned as <span class="inline-code">1.0-SNAPSHOT</span> are development versions that Maven re-downloads on every build to pick up latest changes, while release versions are fixed and cached permanently — enabling controlled dependency lifecycle management.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q8 -->
+<div class="question-card">
+  <div class="q-header">
+    <span class="q-num">Q8</span>
+    <span class="q-text">Demonstrate the procedure for creating a new Docker container using a base image.</span>
+    <span class="q-marks">5 Marks</span>
+  </div>
+  <div class="q-body">
+
+    <div class="diagram">
+      <div class="diagram-title">Docker Container Creation Process</div>
+      <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" width="100%">
+        <defs>
+          <marker id="arr5" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#4f9cf9"/>
+          </marker>
+        </defs>
+        <rect x="5" y="25" width="100" height="50" rx="7" fill="#141a2e" stroke="#8892a4" stroke-width="1.2"/>
+        <text x="55" y="48" text-anchor="middle" fill="#8892a4" font-size="11" font-weight="600">Dockerfile</text>
+        <text x="55" y="64" text-anchor="middle" fill="#8892a4" font-size="10">instructions</text>
+
+        <rect x="155" y="25" width="110" height="50" rx="7" fill="#141a2e" stroke="#4f9cf9" stroke-width="1.5"/>
+        <text x="210" y="48" text-anchor="middle" fill="#4f9cf9" font-size="11" font-weight="600">docker build</text>
+        <text x="210" y="64" text-anchor="middle" fill="#8892a4" font-size="10">create image</text>
+
+        <rect x="315" y="25" width="110" height="50" rx="7" fill="#141a2e" stroke="#3de6b0" stroke-width="1.5"/>
+        <text x="370" y="48" text-anchor="middle" fill="#3de6b0" font-size="11" font-weight="600">Docker Image</text>
+        <text x="370" y="64" text-anchor="middle" fill="#8892a4" font-size="10">read-only layer</text>
+
+        <rect x="475" y="25" width="110" height="50" rx="7" fill="#141a2e" stroke="#f9c94f" stroke-width="1.5"/>
+        <text x="530" y="48" text-anchor="middle" fill="#f9c94f" font-size="11" font-weight="600">docker run</text>
+        <text x="530" y="64" text-anchor="middle" fill="#8892a4" font-size="10">instantiate</text>
+
+        <rect x="635" y="25" width="60" height="50" rx="7" fill="#141a2e" stroke="#f97b4f" stroke-width="1.5"/>
+        <text x="665" y="48" text-anchor="middle" fill="#f97b4f" font-size="11" font-weight="600">Container</text>
+        <text x="665" y="64" text-anchor="middle" fill="#8892a4" font-size="10">running</text>
+
+        <line x1="105" y1="50" x2="153" y2="50" stroke="#4f9cf9" stroke-width="1.5" marker-end="url(#arr5)"/>
+        <line x1="265" y1="50" x2="313" y2="50" stroke="#4f9cf9" stroke-width="1.5" marker-end="url(#arr5)"/>
+        <line x1="425" y1="50" x2="473" y2="50" stroke="#4f9cf9" stroke-width="1.5" marker-end="url(#arr5)"/>
+        <line x1="585" y1="50" x2="633" y2="50" stroke="#4f9cf9" stroke-width="1.5" marker-end="url(#arr5)"/>
+      </svg>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet orange"></div>
+      <div class="point-content"><strong>Step 1 – Pull a Base Image from Docker Hub:</strong> Begin by pulling a verified base image. This forms the foundation layer of your container.</div>
+    </div>
+    <div class="code-block">docker pull ubuntu:latest</div>
+
+    <div class="point">
+      <div class="point-bullet orange"></div>
+      <div class="point-content"><strong>Step 2 – Write a Dockerfile:</strong> A Dockerfile defines instructions to build a custom image on top of the base image — installing packages, copying files, setting environment variables, and specifying the startup command.</div>
+    </div>
+    <div class="code-block">FROM ubuntu:latest
+RUN apt-get update && apt-get install -y python3
+COPY app.py /app/app.py
+WORKDIR /app
+CMD ["python3", "app.py"]</div>
+
+    <div class="point">
+      <div class="point-bullet orange"></div>
+      <div class="point-content"><strong>Step 3 – Build the Docker Image:</strong> Use <span class="inline-code">docker build</span> to create the image from the Dockerfile. The <span class="inline-code">-t</span> flag assigns a name/tag.</div>
+    </div>
+    <div class="code-block">docker build -t my-python-app:1.0 .</div>
+
+    <div class="point">
+      <div class="point-bullet orange"></div>
+      <div class="point-content"><strong>Step 4 – Run a Container from the Image:</strong> Launch a container instance. Use <span class="inline-code">-d</span> for detached mode, <span class="inline-code">-p</span> for port mapping, and <span class="inline-code">--name</span> for a custom container name.</div>
+    </div>
+    <div class="code-block">docker run -d -p 5000:5000 --name myapp my-python-app:1.0</div>
+
+    <div class="point">
+      <div class="point-bullet orange"></div>
+      <div class="point-content"><strong>Step 5 – Verify & Manage the Container:</strong> Check running containers, view logs, inspect details, and stop/remove when done.</div>
+    </div>
+    <div class="code-block">docker ps                    # list running containers
+docker logs myapp            # view container output
+docker stop myapp            # stop container
+docker rm myapp              # remove container</div>
+
+    <div class="point">
+      <div class="point-bullet orange"></div>
+      <div class="point-content"><strong>Key Concept – Layered Architecture:</strong> Docker uses a layered filesystem. Each instruction in the Dockerfile creates a new immutable layer. The container adds a thin writable layer on top of the read-only image layers, enabling efficient storage and reuse.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q9 -->
+<div class="question-card">
+  <div class="q-header">
+    <span class="q-num">Q9</span>
+    <span class="q-text">Illustrate the node clustering capabilities provided by Docker Swarm.</span>
+    <span class="q-marks">5 Marks</span>
+  </div>
+  <div class="q-body">
+
+    <div class="diagram">
+      <div class="diagram-title">Docker Swarm Cluster Architecture</div>
+      <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" width="100%">
+        <defs>
+          <marker id="arr6" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#4f9cf9"/>
+          </marker>
+        </defs>
+
+        <!-- Manager -->
+        <rect x="250" y="10" width="200" height="70" rx="10" fill="#141a2e" stroke="#f9c94f" stroke-width="2"/>
+        <text x="350" y="35" text-anchor="middle" fill="#f9c94f" font-size="13" font-weight="700">Manager Node</text>
+        <text x="350" y="53" text-anchor="middle" fill="#8892a4" font-size="11">Orchestration – Scheduling</text>
+        <text x="350" y="69" text-anchor="middle" fill="#8892a4" font-size="11">Raft Consensus – State Store</text>
+
+        <!-- Workers -->
+        <rect x="30" y="130" width="150" height="60" rx="8" fill="#141a2e" stroke="#3de6b0" stroke-width="1.5"/>
+        <text x="105" y="155" text-anchor="middle" fill="#3de6b0" font-size="12" font-weight="600">Worker Node 1</text>
+        <text x="105" y="173" text-anchor="middle" fill="#8892a4" font-size="11">Container replicas</text>
+
+        <rect x="275" y="130" width="150" height="60" rx="8" fill="#141a2e" stroke="#3de6b0" stroke-width="1.5"/>
+        <text x="350" y="155" text-anchor="middle" fill="#3de6b0" font-size="12" font-weight="600">Worker Node 2</text>
+        <text x="350" y="173" text-anchor="middle" fill="#8892a4" font-size="11">Container replicas</text>
+
+        <rect x="520" y="130" width="150" height="60" rx="8" fill="#141a2e" stroke="#3de6b0" stroke-width="1.5"/>
+        <text x="595" y="155" text-anchor="middle" fill="#3de6b0" font-size="12" font-weight="600">Worker Node 3</text>
+        <text x="595" y="173" text-anchor="middle" fill="#8892a4" font-size="11">Container replicas</text>
+
+        <!-- arrows from manager to workers -->
+        <line x1="300" y1="80" x2="160" y2="128" stroke="#4f9cf9" stroke-width="1.5" marker-end="url(#arr6)"/>
+        <line x1="350" y1="80" x2="350" y2="128" stroke="#4f9cf9" stroke-width="1.5" marker-end="url(#arr6)"/>
+        <line x1="400" y1="80" x2="540" y2="128" stroke="#4f9cf9" stroke-width="1.5" marker-end="url(#arr6)"/>
+
+        <text x="195" y="108" fill="#8892a4" font-size="10" text-anchor="middle">task assign</text>
+        <text x="350" y="108" fill="#8892a4" font-size="10" text-anchor="middle">task assign</text>
+        <text x="502" y="108" fill="#8892a4" font-size="10" text-anchor="middle">task assign</text>
+
+        <!-- TLS label -->
+        <text x="350" y="120" fill="#f97b4f" font-size="10" text-anchor="middle">↔ TLS Encrypted Communication ↔</text>
+      </svg>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Cluster Initialization:</strong> Docker Swarm groups multiple Docker hosts into a single logical cluster. One node acts as the Manager; others are Workers. Initialized with: <span class="inline-code">docker swarm init --advertise-addr &lt;MANAGER_IP&gt;</span>. Worker nodes join using a token: <span class="inline-code">docker swarm join --token &lt;TOKEN&gt; &lt;MANAGER_IP&gt;:2377</span>.</div>
+    </div>
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Manager Node Role:</strong> The Manager Node handles orchestration — scheduling tasks, maintaining cluster state in a Raft-distributed database, and managing service definitions. At least 3 Manager nodes are recommended for high availability (fault tolerance via Raft consensus).</div>
+    </div>
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Worker Node Role:</strong> Worker nodes execute tasks (containers) assigned by the Manager. They do not participate in scheduling decisions. Workers can be added/removed dynamically: <span class="inline-code">docker node ls</span> lists all nodes in the cluster.</div>
+    </div>
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Service Deployment & Scaling:</strong> Applications are deployed as services with defined replica counts. Swarm distributes replicas across worker nodes for load balancing: <span class="inline-code">docker service create --name web --replicas 3 -p 80:80 nginx</span>. Scaling is done with <span class="inline-code">docker service scale web=5</span>.</div>
+    </div>
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Fault Tolerance & Self-Healing:</strong> If a worker node or container fails, Swarm automatically reschedules the tasks onto healthy nodes to maintain the desired replica count — providing built-in self-healing and high availability.</div>
+    </div>
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Overlay Networking & Load Balancing:</strong> Swarm creates an internal routing mesh and overlay network, enabling containers across different nodes to communicate securely. Incoming traffic is automatically distributed among replicas using built-in load balancing — no external load balancer needed for basic deployments.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q10 -->
+<div class="question-card">
+  <div class="q-header">
+    <span class="q-num">Q10</span>
+    <span class="q-text">Demonstrate the necessary commands to interact with a running Docker container's command-line interface.</span>
+    <span class="q-marks">5 Marks</span>
+  </div>
+  <div class="q-body">
+    <div class="point">
+      <div class="point-bullet green"></div>
+      <div class="point-content"><strong>Launch Interactive Container:</strong> Start a container with an interactive terminal directly using the <span class="inline-code">-it</span> flag (interactive + TTY). This drops you into the container's shell.</div>
+    </div>
+    <div class="code-block">docker run -it ubuntu bash
+# -i → keep STDIN open   -t → allocate a TTY terminal</div>
+
+    <div class="point">
+      <div class="point-bullet green"></div>
+      <div class="point-content"><strong>Execute Commands in a Running Container:</strong> Use <span class="inline-code">docker exec</span> to run commands inside an already-running container without stopping it. This is the primary method to access a running container's CLI.</div>
+    </div>
+    <div class="code-block">docker exec -it &lt;container_id&gt; bash
+# Example: docker exec -it myapp /bin/bash</div>
+
+    <div class="point">
+      <div class="point-bullet green"></div>
+      <div class="point-content"><strong>Attach to a Running Container:</strong> <span class="inline-code">docker attach</span> connects your terminal to a running container's primary process (PID 1). Unlike <span class="inline-code">exec</span>, attaching to the main process means exiting the shell may stop the container.</div>
+    </div>
+    <div class="code-block">docker attach &lt;container_id&gt;</div>
+
+    <div class="point">
+      <div class="point-bullet green"></div>
+      <div class="point-content"><strong>View Container Logs & Processes:</strong> Inspect the container's stdout/stderr output and monitor running processes without entering the container shell.</div>
+    </div>
+    <div class="code-block">docker logs -f &lt;container_id&gt;    # follow live logs
+docker top &lt;container_id&gt;        # show running processes
+docker stats &lt;container_id&gt;      # live CPU/memory stats</div>
+
+    <div class="point">
+      <div class="point-bullet green"></div>
+      <div class="point-content"><strong>Copy Files To/From Container:</strong> Transfer files between the host filesystem and a running container's filesystem without needing a shell session.</div>
+    </div>
+    <div class="code-block">docker cp myapp:/app/output.log ./output.log   # container → host
+docker cp ./config.json myapp:/app/config.json  # host → container</div>
+
+    <div class="point">
+      <div class="point-bullet green"></div>
+      <div class="point-content"><strong>Inspect & Debug Container:</strong> Get detailed JSON-formatted metadata about a container — IP address, mounts, environment variables, network settings — useful for debugging configuration issues.</div>
+    </div>
+    <div class="code-block">docker inspect &lt;container_id&gt;
+docker inspect --format='{{.NetworkSettings.IPAddress}}' myapp</div>
+
+    <div class="point">
+      <div class="point-bullet green"></div>
+      <div class="point-content"><strong>Exec vs Attach – Key Difference:</strong> <span class="inline-code">docker exec</span> starts a new process inside the container (preferred for interactive debugging); <span class="inline-code">docker attach</span> connects to the container's main process (PID 1). Use <span class="inline-code">exec</span> to avoid accidentally killing the container on exit.</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===== PART C ===== -->
+<div class="part-header">
+  <span class="part-tag tag-c">Part C</span>
+  <h2>2 × 10 = 20 Marks &nbsp;(Answer Any 2 out of 3)</h2>
+</div>
+
+<!-- Q11 -->
+<div class="question-card">
+  <div class="q-header">
+    <span class="q-num">Q11</span>
+    <span class="q-text">Explain the sequential phases of the Maven Build Life Cycle and POM configurations in automating a software build process.</span>
+    <span class="q-marks">10 Marks</span>
+  </div>
+  <div class="q-body">
+
+    <div class="diagram">
+      <div class="diagram-title">Maven Build Lifecycle – Three Built-in Lifecycles</div>
+      <svg viewBox="0 0 700 240" xmlns="http://www.w3.org/2000/svg" width="100%">
+        <defs>
+          <marker id="arr7" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#4f9cf9"/>
+          </marker>
+        </defs>
+
+        <!-- Title bars -->
+        <rect x="10" y="10" width="200" height="28" rx="6" fill="rgba(249,123,79,0.2)" stroke="#f97b4f" stroke-width="1"/>
+        <text x="110" y="29" text-anchor="middle" fill="#f97b4f" font-size="13" font-weight="700">Clean Lifecycle</text>
+
+        <rect x="240" y="10" width="220" height="28" rx="6" fill="rgba(79,156,249,0.2)" stroke="#4f9cf9" stroke-width="1"/>
+        <text x="350" y="29" text-anchor="middle" fill="#4f9cf9" font-size="13" font-weight="700">Default Lifecycle</text>
+
+        <rect x="490" y="10" width="200" height="28" rx="6" fill="rgba(249,201,79,0.2)" stroke="#f9c94f" stroke-width="1"/>
+        <text x="590" y="29" text-anchor="middle" fill="#f9c94f" font-size="13" font-weight="700">Site Lifecycle</text>
+
+        <!-- Clean phases -->
+        <rect x="10" y="50" width="200" height="36" rx="6" fill="#141a2e" stroke="#f97b4f" stroke-width="1"/>
+        <text x="110" y="68" text-anchor="middle" fill="#f97b4f" font-size="11" font-weight="600">pre-clean</text>
+        <text x="110" y="80" text-anchor="middle" fill="#8892a4" font-size="10">prepare cleanup</text>
+
+        <rect x="10" y="100" width="200" height="36" rx="6" fill="#141a2e" stroke="#f97b4f" stroke-width="1.5"/>
+        <text x="110" y="118" text-anchor="middle" fill="#f97b4f" font-size="11" font-weight="600">clean</text>
+        <text x="110" y="130" text-anchor="middle" fill="#8892a4" font-size="10">delete target/ dir</text>
+
+        <rect x="10" y="150" width="200" height="36" rx="6" fill="#141a2e" stroke="#f97b4f" stroke-width="1"/>
+        <text x="110" y="168" text-anchor="middle" fill="#f97b4f" font-size="11" font-weight="600">post-clean</text>
+        <text x="110" y="180" text-anchor="middle" fill="#8892a4" font-size="10">after cleaning</text>
+
+        <line x1="110" y1="86" x2="110" y2="98" stroke="#f97b4f" stroke-width="1.2" marker-end="url(#arr7)"/>
+        <line x1="110" y1="136" x2="110" y2="148" stroke="#f97b4f" stroke-width="1.2" marker-end="url(#arr7)"/>
+
+        <!-- Default phases -->
+        <rect x="240" y="50" width="220" height="28" rx="6" fill="#141a2e" stroke="#4f9cf9" stroke-width="1"/>
+        <text x="350" y="64" text-anchor="middle" fill="#4f9cf9" font-size="11" font-weight="600">validate</text>
+        <text x="455" y="64" text-anchor="middle" fill="#8892a4" font-size="10">check project</text>
+        <line x1="350" y1="78" x2="350" y2="88" stroke="#4f9cf9" stroke-width="1.2" marker-end="url(#arr7)"/>
+
+        <rect x="240" y="90" width="220" height="28" rx="6" fill="#141a2e" stroke="#4f9cf9" stroke-width="1"/>
+        <text x="350" y="104" text-anchor="middle" fill="#4f9cf9" font-size="11" font-weight="600">compile</text>
+        <text x="455" y="104" text-anchor="middle" fill="#8892a4" font-size="10">compile sources</text>
+        <line x1="350" y1="118" x2="350" y2="128" stroke="#4f9cf9" stroke-width="1.2" marker-end="url(#arr7)"/>
+
+        <rect x="240" y="130" width="220" height="28" rx="6" fill="#141a2e" stroke="#4f9cf9" stroke-width="1"/>
+        <text x="350" y="144" text-anchor="middle" fill="#4f9cf9" font-size="11" font-weight="600">test</text>
+        <text x="455" y="144" text-anchor="middle" fill="#8892a4" font-size="10">run unit tests</text>
+        <line x1="350" y1="158" x2="350" y2="168" stroke="#4f9cf9" stroke-width="1.2" marker-end="url(#arr7)"/>
+
+        <rect x="240" y="170" width="220" height="28" rx="6" fill="#141a2e" stroke="#4f9cf9" stroke-width="2"/>
+        <text x="350" y="184" text-anchor="middle" fill="#4f9cf9" font-size="11" font-weight="600">package</text>
+        <text x="455" y="184" text-anchor="middle" fill="#8892a4" font-size="10">JAR/WAR</text>
+        <line x1="350" y1="198" x2="350" y2="208" stroke="#4f9cf9" stroke-width="1.2" marker-end="url(#arr7)"/>
+
+        <rect x="240" y="210" width="220" height="28" rx="6" fill="#141a2e" stroke="#3de6b0" stroke-width="2"/>
+        <text x="350" y="224" text-anchor="middle" fill="#3de6b0" font-size="11" font-weight="600">verify → install → deploy</text>
+
+        <!-- Site phases -->
+        <rect x="490" y="50" width="200" height="30" rx="6" fill="#141a2e" stroke="#f9c94f" stroke-width="1"/>
+        <text x="590" y="70" text-anchor="middle" fill="#f9c94f" font-size="11" font-weight="600">pre-site</text>
+        <line x1="590" y1="80" x2="590" y2="92" stroke="#f9c94f" stroke-width="1.2" marker-end="url(#arr7)"/>
+
+        <rect x="490" y="95" width="200" height="30" rx="6" fill="#141a2e" stroke="#f9c94f" stroke-width="1.5"/>
+        <text x="590" y="115" text-anchor="middle" fill="#f9c94f" font-size="11" font-weight="600">site (generate docs)</text>
+        <line x1="590" y1="125" x2="590" y2="137" stroke="#f9c94f" stroke-width="1.2" marker-end="url(#arr7)"/>
+
+        <rect x="490" y="140" width="200" height="30" rx="6" fill="#141a2e" stroke="#f9c94f" stroke-width="1"/>
+        <text x="590" y="160" text-anchor="middle" fill="#f9c94f" font-size="11" font-weight="600">post-site</text>
+        <line x1="590" y1="170" x2="590" y2="182" stroke="#f9c94f" stroke-width="1.2" marker-end="url(#arr7)"/>
+
+        <rect x="490" y="185" width="200" height="30" rx="6" fill="#141a2e" stroke="#f9c94f" stroke-width="1"/>
+        <text x="590" y="205" text-anchor="middle" fill="#f9c94f" font-size="11" font-weight="600">site-deploy</text>
+      </svg>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Overview of Maven Lifecycles:</strong> Maven has three built-in lifecycles — <em>Clean</em> (removes previous build artifacts), <em>Default</em> (main build + deployment process), and <em>Site</em> (generates project documentation). Each lifecycle is an ordered sequence of phases; invoking a phase automatically triggers all preceding phases.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Default Lifecycle – Phase 1: validate:</strong> Verifies that the project is correct and all necessary information is available (pom.xml is valid, dependencies are declared). If validation fails, the build stops immediately. Command: <span class="inline-code">mvn validate</span>.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Default Lifecycle – Phase 2: compile:</strong> Compiles the project's Java source files (<span class="inline-code">src/main/java</span>) into bytecode, placing <span class="inline-code">.class</span> files in the <span class="inline-code">target/classes</span> directory. Uses the maven-compiler-plugin. Command: <span class="inline-code">mvn compile</span>.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Default Lifecycle – Phase 3: test:</strong> Executes unit tests from <span class="inline-code">src/test/java</span> using frameworks like JUnit or TestNG via the maven-surefire-plugin. Build fails if tests fail. Tests can be skipped with <span class="inline-code">-DskipTests</span>. Command: <span class="inline-code">mvn test</span>.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Default Lifecycle – Phase 4: package:</strong> Packages the compiled code into a distributable format — <span class="inline-code">.jar</span> (Java Archive) or <span class="inline-code">.war</span> (Web Archive) — and places it in the <span class="inline-code">target/</span> directory. The packaging type is defined in pom.xml with <span class="inline-code">&lt;packaging&gt;jar&lt;/packaging&gt;</span>. Command: <span class="inline-code">mvn package</span>.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Default Lifecycle – Phases 5–7: verify, install, deploy:</strong> <em>verify</em> runs integration tests and checks package validity. <em>install</em> installs the artifact into the local <span class="inline-code">~/.m2/repository</span> for use by other local projects. <em>deploy</em> copies the final artifact to a remote repository (Nexus/Artifactory) for sharing with teams. Command: <span class="inline-code">mvn install</span>.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>POM (Project Object Model) – Core Configuration:</strong> The <span class="inline-code">pom.xml</span> is Maven's heart. It defines project coordinates (<span class="inline-code">groupId</span>, <span class="inline-code">artifactId</span>, <span class="inline-code">version</span>), packaging type, dependencies, plugins, and build configurations. All lifecycle behavior is controlled through pom.xml.</div>
+    </div>
+    <div class="code-block">&lt;project&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;com.example&lt;/groupId&gt;
+  &lt;artifactId&gt;my-app&lt;/artifactId&gt;
+  &lt;version&gt;1.0.0&lt;/version&gt;
+  &lt;packaging&gt;jar&lt;/packaging&gt;
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;junit&lt;/groupId&gt;
+      &lt;artifactId&gt;junit&lt;/artifactId&gt;
+      &lt;version&gt;4.13&lt;/version&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/project&gt;</div>
+
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Plugin Configuration in POM:</strong> Maven plugins extend lifecycle behavior. For example, <span class="inline-code">maven-compiler-plugin</span> sets the Java source/target version, <span class="inline-code">maven-surefire-plugin</span> controls test execution, and <span class="inline-code">maven-jar-plugin</span> configures the main class for executable JARs.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Clean Lifecycle:</strong> Executed with <span class="inline-code">mvn clean</span>, it deletes the <span class="inline-code">target/</span> directory containing all previous build artifacts — ensuring a fresh, reproducible build. Typically combined: <span class="inline-code">mvn clean install</span> cleans and then runs the full default lifecycle up to install.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Build Automation Benefit:</strong> Running <span class="inline-code">mvn package</span> automatically triggers the chain: <em>validate → compile → test → package</em>. This enforces a disciplined, repeatable build process — developers cannot skip compilation or tests accidentally, ensuring consistent software quality in CI/CD pipelines (e.g., Jenkins calling <span class="inline-code">mvn clean install</span>).</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q12 -->
+<div class="question-card">
+  <div class="q-header">
+    <span class="q-num">Q12</span>
+    <span class="q-text">Develop a multi-container application architecture utilizing Docker Compose.</span>
+    <span class="q-marks">10 Marks</span>
+  </div>
+  <div class="q-body">
+
+    <div class="diagram">
+      <div class="diagram-title">Docker Compose – Multi-Container Architecture</div>
+      <svg viewBox="0 0 700 210" xmlns="http://www.w3.org/2000/svg" width="100%">
+        <defs>
+          <marker id="arr8" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#3de6b0"/>
+          </marker>
+          <marker id="arr9" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#f9c94f"/>
+          </marker>
+        </defs>
+
+        <!-- Host border -->
+        <rect x="5" y="5" width="690" height="195" rx="12" fill="none" stroke="#252a38" stroke-width="1.5" stroke-dasharray="6,4"/>
+        <text x="350" y="195" text-anchor="middle" fill="#252a38" font-size="11">Docker Host</text>
+
+        <!-- docker-compose.yml -->
+        <rect x="20" y="20" width="140" height="60" rx="8" fill="#141a2e" stroke="#f9c94f" stroke-width="1.5"/>
+        <text x="90" y="44" text-anchor="middle" fill="#f9c94f" font-size="11" font-weight="700">docker-compose.yml</text>
+        <text x="90" y="60" text-anchor="middle" fill="#8892a4" font-size="10">defines all services</text>
+        <text x="90" y="73" text-anchor="middle" fill="#8892a4" font-size="10">networks, volumes</text>
+
+        <!-- Services -->
+        <rect x="210" y="20" width="130" height="60" rx="8" fill="#141a2e" stroke="#4f9cf9" stroke-width="1.5"/>
+        <text x="275" y="43" text-anchor="middle" fill="#4f9cf9" font-size="12" font-weight="600">Frontend</text>
+        <text x="275" y="58" text-anchor="middle" fill="#8892a4" font-size="11">React / Nginx</text>
+        <text x="275" y="72" text-anchor="middle" fill="#8892a4" font-size="10">port 3000:80</text>
+
+        <rect x="380" y="20" width="130" height="60" rx="8" fill="#141a2e" stroke="#3de6b0" stroke-width="1.5"/>
+        <text x="445" y="43" text-anchor="middle" fill="#3de6b0" font-size="12" font-weight="600">Backend API</text>
+        <text x="445" y="58" text-anchor="middle" fill="#8892a4" font-size="11">Node / Flask</text>
+        <text x="445" y="72" text-anchor="middle" fill="#8892a4" font-size="10">port 5000:5000</text>
+
+        <rect x="550" y="20" width="130" height="60" rx="8" fill="#141a2e" stroke="#f97b4f" stroke-width="1.5"/>
+        <text x="615" y="43" text-anchor="middle" fill="#f97b4f" font-size="12" font-weight="600">Database</text>
+        <text x="615" y="58" text-anchor="middle" fill="#8892a4" font-size="11">MySQL / Postgres</text>
+        <text x="615" y="72" text-anchor="middle" fill="#8892a4" font-size="10">port 3306 (internal)</text>
+
+        <!-- arrows between services -->
+        <line x1="160" y1="50" x2="208" y2="50" stroke="#f9c94f" stroke-width="1.5" marker-end="url(#arr9)"/>
+        <line x1="340" y1="50" x2="378" y2="50" stroke="#3de6b0" stroke-width="1.5" marker-end="url(#arr8)"/>
+        <line x1="510" y1="50" x2="548" y2="50" stroke="#3de6b0" stroke-width="1.5" marker-end="url(#arr8)"/>
+
+        <!-- Network -->
+        <rect x="210" y="110" width="470" height="35" rx="8" fill="rgba(79,156,249,0.08)" stroke="#4f9cf9" stroke-width="1" stroke-dasharray="5,3"/>
+        <text x="445" y="133" text-anchor="middle" fill="#4f9cf9" font-size="11">app-network (Bridge Network — inter-container communication)</text>
+
+        <!-- Volume -->
+        <rect x="210" y="160" width="200" height="30" rx="6" fill="rgba(249,123,79,0.08)" stroke="#f97b4f" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="310" y="180" text-anchor="middle" fill="#f97b4f" font-size="11">db-volume (persistent storage)</text>
+
+        <!-- vertical connections to network -->
+        <line x1="275" y1="80" x2="275" y2="110" stroke="#4f9cf9" stroke-width="1" stroke-dasharray="3,2"/>
+        <line x1="445" y1="80" x2="445" y2="110" stroke="#4f9cf9" stroke-width="1" stroke-dasharray="3,2"/>
+        <line x1="615" y1="80" x2="615" y2="110" stroke="#4f9cf9" stroke-width="1" stroke-dasharray="3,2"/>
+        <line x1="615" y1="145" x2="615" y2="160" stroke="#f97b4f" stroke-width="1" stroke-dasharray="3,2"/>
+        <line x1="615" y1="160" x2="415" y2="160" stroke="#f97b4f" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#arr9)"/>
+      </svg>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet green"></div>
+      <div class="point-content"><strong>What is Docker Compose:</strong> Docker Compose is a tool for defining and running multi-container Docker applications using a single YAML configuration file (<span class="inline-code">docker-compose.yml</span>). It allows all services (frontend, backend, database, cache) to be started, stopped, and managed with a single command.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet green"></div>
+      <div class="point-content"><strong>Sample Multi-Container docker-compose.yml:</strong> The following defines a 3-tier web application with Frontend (Nginx), Backend API (Flask/Node), and a Database (MySQL).</div>
+    </div>
+    <div class="code-block">version: '3.8'
+
+services:
+  frontend:
+    image: nginx:alpine
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      - DB_HOST=database
+      - DB_PORT=3306
+    depends_on:
+      - database
+    networks:
+      - app-network
+
+  database:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=appdb
+    volumes:
+      - db-volume:/var/lib/mysql
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db-volume:</div>
+
+    <div class="point">
+      <div class="point-bullet green"></div>
+      <div class="point-content"><strong>Services Definition:</strong> Each <span class="inline-code">service</span> block defines a container — specifying its image or build context, port mappings, environment variables, and startup dependencies (<span class="inline-code">depends_on</span>). Docker Compose ensures the database starts before the backend, and the backend before the frontend.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet green"></div>
+      <div class="point-content"><strong>Networking:</strong> Docker Compose automatically creates a <em>bridge network</em> for all services. Containers communicate using their service names as DNS hostnames (e.g., the backend connects to the database using hostname <span class="inline-code">database</span>), eliminating the need to hardcode IP addresses.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet green"></div>
+      <div class="point-content"><strong>Volumes for Persistence:</strong> Named volumes (e.g., <span class="inline-code">db-volume</span>) persist database data across container restarts. Without volumes, all database data would be lost when the container is stopped or removed.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet green"></div>
+      <div class="point-content"><strong>Environment Variables:</strong> Sensitive configuration (passwords, hostnames, ports) is passed to containers via the <span class="inline-code">environment</span> block or a <span class="inline-code">.env</span> file, keeping credentials out of the application code and enabling environment-specific configurations.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet green"></div>
+      <div class="point-content"><strong>Essential Docker Compose Commands:</strong></div>
+    </div>
+    <div class="code-block">docker compose up -d        # start all services in background
+docker compose down         # stop and remove containers/networks
+docker compose ps           # list running services
+docker compose logs -f      # follow logs of all services
+docker compose build        # rebuild images
+docker compose scale backend=3  # scale backend to 3 instances</div>
+
+    <div class="point">
+      <div class="point-bullet green"></div>
+      <div class="point-content"><strong>Advantages over Manual Docker Commands:</strong> Without Compose, each container would need to be started individually with lengthy <span class="inline-code">docker run</span> commands, and networking/volume configuration would be done manually. Compose encodes the entire application topology in one declarative file, enabling reproducibility across development, staging, and CI environments.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet green"></div>
+      <div class="point-content"><strong>Use in CI/CD Pipelines:</strong> In Jenkins or GitHub Actions, <span class="inline-code">docker compose up</span> is used to spin up all required services for integration testing (test database, mock APIs), run the tests, and then <span class="inline-code">docker compose down</span> to clean up — enabling clean, isolated test environments per build run.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q13 -->
+<div class="question-card">
+  <div class="q-header">
+    <span class="q-num">Q13</span>
+    <span class="q-text">Evaluate the integration of Docker Trusted Registry within an enterprise deployment pipeline.</span>
+    <span class="q-marks">10 Marks</span>
+  </div>
+  <div class="q-body">
+
+    <div class="diagram">
+      <div class="diagram-title">DTR Integration in Enterprise CI/CD Pipeline</div>
+      <svg viewBox="0 0 700 140" xmlns="http://www.w3.org/2000/svg" width="100%">
+        <defs>
+          <marker id="arr10" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#4f9cf9"/>
+          </marker>
+        </defs>
+
+        <rect x="5" y="40" width="90" height="60" rx="8" fill="#141a2e" stroke="#8892a4" stroke-width="1.2"/>
+        <text x="50" y="66" text-anchor="middle" fill="#8892a4" font-size="11" font-weight="600">Dev</text>
+        <text x="50" y="80" text-anchor="middle" fill="#8892a4" font-size="10">git push</text>
+
+        <rect x="120" y="40" width="110" height="60" rx="8" fill="#141a2e" stroke="#f9c94f" stroke-width="1.5"/>
+        <text x="175" y="66" text-anchor="middle" fill="#f9c94f" font-size="11" font-weight="600">CI Pipeline</text>
+        <text x="175" y="80" text-anchor="middle" fill="#8892a4" font-size="10">Jenkins build</text>
+        <text x="175" y="93" text-anchor="middle" fill="#8892a4" font-size="10">docker build</text>
+
+        <rect x="260" y="40" width="130" height="60" rx="8" fill="#141a2e" stroke="#4f9cf9" stroke-width="2"/>
+        <text x="325" y="63" text-anchor="middle" fill="#4f9cf9" font-size="12" font-weight="700">DTR</text>
+        <text x="325" y="78" text-anchor="middle" fill="#8892a4" font-size="10">Private Registry</text>
+        <text x="325" y="91" text-anchor="middle" fill="#8892a4" font-size="10">RBAC + Scanning</text>
+
+        <rect x="420" y="20" width="120" height="50" rx="8" fill="#141a2e" stroke="#3de6b0" stroke-width="1.5"/>
+        <text x="480" y="42" text-anchor="middle" fill="#3de6b0" font-size="11" font-weight="600">Staging Env</text>
+        <text x="480" y="57" text-anchor="middle" fill="#8892a4" font-size="10">docker pull from DTR</text>
+
+        <rect x="420" y="90" width="120" height="50" rx="8" fill="#141a2e" stroke="#f97b4f" stroke-width="1.5"/>
+        <text x="480" y="112" text-anchor="middle" fill="#f97b4f" font-size="11" font-weight="600">Production Env</text>
+        <text x="480" y="127" text-anchor="middle" fill="#8892a4" font-size="10">signed images only</text>
+
+        <rect x="578" y="40" width="112" height="60" rx="8" fill="#141a2e" stroke="#8892a4" stroke-width="1.2"/>
+        <text x="634" y="63" text-anchor="middle" fill="#8892a4" font-size="11" font-weight="600">UCP</text>
+        <text x="634" y="78" text-anchor="middle" fill="#8892a4" font-size="10">Universal Control</text>
+        <text x="634" y="91" text-anchor="middle" fill="#8892a4" font-size="10">Plane (UI)</text>
+
+        <line x1="95" y1="70" x2="118" y2="70" stroke="#4f9cf9" stroke-width="1.5" marker-end="url(#arr10)"/>
+        <line x1="230" y1="70" x2="258" y2="70" stroke="#4f9cf9" stroke-width="1.5" marker-end="url(#arr10)"/>
+        <line x1="390" y1="60" x2="418" y2="46" stroke="#4f9cf9" stroke-width="1.5" marker-end="url(#arr10)"/>
+        <line x1="390" y1="80" x2="418" y2="110" stroke="#4f9cf9" stroke-width="1.5" marker-end="url(#arr10)"/>
+        <line x1="540" y1="70" x2="576" y2="70" stroke="#4f9cf9" stroke-width="1.5" marker-end="url(#arr10)"/>
+
+        <text x="107" y="65" text-anchor="middle" fill="#8892a4" font-size="9">push</text>
+        <text x="245" y="65" text-anchor="middle" fill="#8892a4" font-size="9">push</text>
+        <text x="406" y="42" text-anchor="middle" fill="#8892a4" font-size="9">pull</text>
+        <text x="406" y="98" text-anchor="middle" fill="#8892a4" font-size="9">pull</text>
+      </svg>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>What is Docker Trusted Registry (DTR):</strong> DTR is an enterprise-grade, private container image registry — part of Docker Enterprise. Unlike Docker Hub (public cloud), DTR is hosted on-premises or in a private cloud, giving organizations complete control over image storage, distribution, and access. It integrates with Docker Universal Control Plane (UCP) for unified management.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Role in CI Pipeline – Image Push:</strong> After a CI tool (Jenkins) builds and tags a Docker image (e.g., <span class="inline-code">dtr.company.com/myapp:1.0</span>), it pushes the image directly to DTR using <span class="inline-code">docker push</span>. DTR acts as the central artifact store for all built images, replacing Docker Hub with an internally controlled registry.</div>
+    </div>
+    <div class="code-block">docker build -t dtr.company.com/myapp:1.0 .
+docker login dtr.company.com
+docker push dtr.company.com/myapp:1.0</div>
+
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Security – Role-Based Access Control (RBAC):</strong> DTR enforces granular RBAC policies — different teams (Dev, QA, Ops) get specific permissions (read-only, read-write, admin) per repository. This ensures only authorized engineers can push production images, preventing unauthorized deployments.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Security – Automated Image Scanning:</strong> DTR scans every pushed image for known CVEs (Common Vulnerabilities and Exposures) using binary-level analysis. Vulnerable images are flagged before deployment, acting as a security gate in the pipeline. Pipeline can be configured to reject images with critical vulnerabilities.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Security – Image Signing & Content Trust:</strong> DTR integrates with Docker Content Trust (DCT) to enforce that only cryptographically signed images are deployed. In the pipeline, the CI system signs the image with a private key after all tests pass; production deployments reject unsigned images.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>CD Pipeline – Image Pull & Deploy:</strong> Deployment systems (Kubernetes, Docker Swarm, UCP) pull validated, signed images from DTR to staging and production environments. Since DTR is internal, this pull is fast, reliable, and not subject to Docker Hub rate limits.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>High Availability & Disaster Recovery:</strong> DTR supports multi-node clustering with load balancing for high availability. Image data is replicated across nodes using shared storage. This ensures the registry remains available even if individual nodes fail — critical for uninterrupted CI/CD pipelines.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>LDAP / Active Directory Integration:</strong> DTR integrates with enterprise identity providers (LDAP, Active Directory) for authentication. Engineers log in using existing corporate credentials — no separate registry accounts needed, simplifying user management and enabling SSO (Single Sign-On) for the pipeline.</div>
+    </div>
+
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>DTR vs Docker Hub – Enterprise Comparison:</strong></div>
+    </div>
+
+    <table>
+      <tr>
+        <th>Feature</th>
+        <th>Docker Trusted Registry (DTR)</th>
+        <th>Docker Hub</th>
+      </tr>
+      <tr>
+        <td>Hosting</td>
+        <td>Private (on-premises / private cloud)</td>
+        <td>Public cloud only</td>
+      </tr>
+      <tr>
+        <td>Security</td>
+        <td>RBAC, image signing, CVE scanning</td>
+        <td>Limited (private repos only)</td>
+      </tr>
+      <tr>
+        <td>High Availability</td>
+        <td>Clustered, load-balanced replicas</td>
+        <td>No built-in HA</td>
+      </tr>
+      <tr>
+        <td>Authentication</td>
+        <td>LDAP / Active Directory SSO</td>
+        <td>Docker Hub accounts only</td>
+      </tr>
+      <tr>
+        <td>Compliance</td>
+        <td>Regulatory compliance policies</td>
+        <td>Basic compliance</td>
+      </tr>
+    </table>
+
+    <div class="point">
+      <div class="point-bullet"></div>
+      <div class="point-content"><strong>Automated Garbage Collection:</strong> DTR includes scheduled garbage collection to remove unused, untagged images and reclaim storage space automatically — keeping the registry lean without manual intervention, which is essential in pipelines that generate many images per day.</div>
+    </div>
+  </div>
+</div>
+
+</main>
+</body>
+</html>
